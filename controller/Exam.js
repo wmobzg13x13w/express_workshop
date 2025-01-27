@@ -52,7 +52,7 @@ exports.requestExam = async (req, res) => {
   }
 };
 
-exports.submitVoucher = async (req, res) => {
+exports.createExam = async (req, res) => {
   try {
     const { voucherCode, studentId } = req.body;
 

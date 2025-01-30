@@ -10,8 +10,14 @@ const voucherSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  associatedEmail: {
+    type: String,
+    required: true,
+  },
+
+  expiresAt: {
+    type: Date,
+  },
 });
 
-const Voucher = mongoose.model("Voucher", voucherSchema);
-
-module.exports = Voucher;
+module.exports = mongoose.model("Voucher", voucherSchema);

@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createVouchers, redeemVoucher } = require("../controllers/Voucher");
+const { createVouchers, redeemVoucher } = require("../controller/Voucher");
 const authenticateProfessor = require("../middleware/authenticateProfessor");
 const authenticateStudent = require("../middleware/authenticateStudent");
 

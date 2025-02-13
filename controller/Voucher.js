@@ -1,5 +1,6 @@
-const Voucher = require("../model/Voucher");
 const User = require("../model/User");
+const Voucher = require("../model/Voucher");
+
 const nodemailer = require("nodemailer");
 
 const generateUniqueVoucherCode = () => {
@@ -77,6 +78,9 @@ exports.redeemVoucher = async (req, res) => {
         .json({ message: "Unauthorized: This voucher is not assigned to you" });
     }
 
+    const student = await User.findOne({
+      studentEmail,
+    });
     if (new Date() > voucher.expiresAt) {
       return res.status(400).json({ message: "Voucher has expired" });
     }
@@ -87,7 +91,7 @@ exports.redeemVoucher = async (req, res) => {
     const quizzes = await Quiz.aggregate([{ $sample: { size: 3 } }]);
 
     const newExam = new Exam({
-      studentId: studentEmail,
+      studentId: student._id,
       quizzes: quizzes.map((quiz) => quiz._id),
     });
 

@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const jwt = require("jsonwebtoken");
 
 const quizSchema = mongoose.Schema({
   question: { type: String, required: true },

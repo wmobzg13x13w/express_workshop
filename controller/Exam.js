@@ -1,10 +1,5 @@
-const Voucher = require("../model/Voucher");
-const Quiz = require("../model/Quiz");
 const Exam = require("../model/Exam");
-const nodemailer = require("nodemailer");
-const User = require("../model/User");
 
-// Controller to submit exam responses and evaluate score
 exports.submitExam = async (req, res) => {
   try {
     const { examId, responses } = req.body;
